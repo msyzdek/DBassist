@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    <changeSet author="msyzdek" id="1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="PRODUCTS">
+            <column autoIncrement="true" name="ID" type="numeric(8)">
+                <constraints primaryKey="true" primaryKeyName="PRODUCTS_PK"/>
+            </column>
+            <column name="AMOUNT" type="numeric(8)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="msyzdek" id="2" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="PRODUCT_DETAILS">
+            <column autoIncrement="true" name="ID" type="numeric(8)">
+                <constraints primaryKey="true" primaryKeyName="PRODUCT_DETAILS_PK"/>
+            </column>
+            <column name="TYPE" type="varchar(100)"/>
+            <column name="PRICE" type="numeric(8)" />
+            <column name="NAME" type="varchar(250)"/>
+            <column name="PRODUCT_ID" type="numeric(8)">
+                <constraints nullable="false" foreignKeyName="fk_address_employee" references="employee(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
